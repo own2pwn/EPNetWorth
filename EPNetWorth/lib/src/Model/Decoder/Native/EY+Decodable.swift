@@ -13,7 +13,7 @@ public protocol DecodableConvertible: EYNetworkModel, Decodable {}
 public extension DecodableConvertible {
     public init(from data: Data, args: Any...) throws {
         guard let decoder = args.first as? JSONDecoder else {
-            throw EYNetError(reason: "no json decoder provided to map model!")
+            throw EYNetError(reason: "no json decoder provided to map [\(Self.self)]]!")
         }
 
         do {
@@ -30,7 +30,7 @@ public extension DecodableConvertible {
 
     static func makeArray<M: EYNetworkModel>(from data: Data, args: Any...) throws -> [M] {
         guard let decoder = args.first as? JSONDecoder else {
-            throw EYNetError(reason: "no json decoder provided to map model!")
+            throw EYNetError(reason: "no json decoder provided to map [\(Self.self)]]!")
         }
 
         do {
@@ -48,6 +48,6 @@ public extension DecodableConvertible {
     // MARK: - Helpers
 
     private static func logError(_ error: Error, _ caller: DecodableConvertible.Type) {
-        print("\(caller) can't parse model: [\(error.localizedDescription)]")
+        print("^ E: [\(caller)] can't parse model: [\(error.localizedDescription)]")
     }
 }

@@ -33,19 +33,17 @@ extension URL {
 }
 
 extension URLRequest {
-    init(url: URL, body: [BodyElement]) {
+    init(url: URL, body: Data?) {
         self.init(url: url)
+        setBody(body)
     }
 
     // MARK: - Helpers
 
-    private mutating func setBody(_ body: [BodyElement]) {
-        guard !body.isEmpty else { return }
+    private mutating func setBody(_ body: Data?) {
+        guard let body = body else { return }
         method = .POST
-
-        let bodyComponents = body.map { "\($0.key)=\($0.value.urlEncoded)" }
-        let bodyString = bodyComponents.joined(separator: "&")
-        httpBody = bodyString.data(using: .utf8)
+        httpBody = body
     }
 }
 

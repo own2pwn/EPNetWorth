@@ -8,7 +8,7 @@
 import Foundation
 import Promise
 
-final class EYMapperImp: EYMapper {
+public final class EYMapperImp: EYMapper {
     // MARK: - Members
 
     private let encoder: JSONEncoder = {
@@ -19,7 +19,11 @@ final class EYMapperImp: EYMapper {
 
     // MARK: - Interface
 
-    func map<M: EYEncodableNetworkModel>(_ model: M) throws -> Promise<Data> {
-        return Promise<Data>(value: try model.serialize(args: encoder))
+    public func map<M: EYEncodableNetworkModel>(_ model: M) throws -> Data {
+        return try model.serialize(args: encoder)
     }
+
+    // MARK: - Init
+
+    public init() {}
 }

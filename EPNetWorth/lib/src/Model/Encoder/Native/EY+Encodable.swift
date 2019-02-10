@@ -12,7 +12,7 @@ public protocol EncodableConvertible: EYEncodableNetworkModel, Encodable {}
 public extension EncodableConvertible {
     public func serialize(args: Any...) throws -> Data {
         guard let encoder = args.first as? JSONEncoder else {
-            throw EYNetError(reason: "no json encoder provided to serialize model!")
+            throw EYNetError(reason: "no json encoder provided to serialize [\(Self.self)]!")
         }
 
         do {
@@ -28,6 +28,6 @@ public extension EncodableConvertible {
     // MARK: - Helpers
 
     private func logError(_ error: Error, _ caller: EncodableConvertible.Type) {
-        print("\(caller) can't map model: [\(error.localizedDescription)]")
+        print("^ E: [\(caller)] can't serialize model: [\(error.localizedDescription)]")
     }
 }

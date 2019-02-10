@@ -8,9 +8,9 @@
 import Foundation
 import Promise
 
-protocol EYMapper: class {
+public protocol EYMapper: class {
     init()
 
-    func map<M: EYEncodableNetworkModel>(_ model: M) throws -> Promise<Data>
+    func map<M: EYEncodableNetworkModel>(_ model: M) throws -> Data
     // func mapArray<M: EYEncodableNetworkModel>(_ model: [M]) -> Promise<Data>
 }
