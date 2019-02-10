@@ -30,7 +30,7 @@ public final class EYClientImp<R: Resource, Q: QueryElement, B: BodyElement>: EY
 
     // MARK: - Array
 
-    public func getArray<M: EYNetworkModel>(resource: R, with query: [Q] = []) -> Promise<[M]> {
+    public func get<M: EYNetworkModel>(resource: R, with query: [Q] = []) -> Promise<[M]> {
         return handleRequestArray(to: resource, with: query)
     }
 
