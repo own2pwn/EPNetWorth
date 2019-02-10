@@ -1,0 +1,3 @@
+[submodule "Promise"]
+	path = Promise
+	url = https://github.com/khanlou/Promise
