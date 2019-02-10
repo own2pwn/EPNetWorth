@@ -83,14 +83,14 @@ public extension EYClientImp {
     @discardableResult
     private func makeRequestTask<M: EYNetworkModel>(with request: URLRequest, result: Promise<M>) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, headers, err in
-            self.handleResponse(promise: result, data, headers: headers, error: err)
+            try? self.handleResponse(promise: result, data, headers: headers, error: err)
         }
         task.resume()
 
         return task
     }
 
-    private func handleResponse<M: EYNetworkModel>(promise: Promise<M>, _ data: Data?, headers: URLResponse?, error: Error?) -> Void {
+    private func handleResponse<M: EYNetworkModel>(promise: Promise<M>, _ data: Data?, headers: URLResponse?, error: Error?) throws {
         guard error == nil else { promise.reject(error.unsafelyUnwrapped); return }
         guard let data = data else {
             if let url = headers?.url {
@@ -103,7 +103,7 @@ public extension EYClientImp {
             return
         }
 
-        parser.parse(M.self, data).then(promise.fulfill)
+        try parser.parse(M.self, data).then(promise.fulfill)
     }
 
     private func buildRequest(to resource: Resource, with query: [QueryElement] = [], body: [BodyElement] = []) -> URLRequest {
@@ -129,14 +129,14 @@ public extension EYClientImp {
     @discardableResult
     private func makeRequestTaskArray<M: EYNetworkModel>(with request: URLRequest, result: Promise<[M]>) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, headers, err in
-            self.handleResponseArray(promise: result, data, headers: headers, error: err)
+            try? self.handleResponseArray(promise: result, data, headers: headers, error: err)
         }
         task.resume()
 
         return task
     }
 
-    private func handleResponseArray<M: EYNetworkModel>(promise: Promise<[M]>, _ data: Data?, headers: URLResponse?, error: Error?) -> Void {
+    private func handleResponseArray<M: EYNetworkModel>(promise: Promise<[M]>, _ data: Data?, headers: URLResponse?, error: Error?) throws {
         guard error == nil else { promise.reject(error.unsafelyUnwrapped); return }
         guard let data = data else {
             if let url = headers?.url {
@@ -149,6 +149,6 @@ public extension EYClientImp {
             return
         }
 
-        parser.parseArray(M.self, data).then(promise.fulfill)
+        try parser.parseArray(M.self, data).then(promise.fulfill)
     }
 }

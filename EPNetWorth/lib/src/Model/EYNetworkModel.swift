@@ -1,5 +1,5 @@
 //
-//  NetworkConvertible.swift
+//  EYNetworkModel.swift
 //  EPNetWorth
 //
 //  Created by Evgeniy on 10/02/2019.

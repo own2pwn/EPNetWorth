@@ -12,6 +12,6 @@ import Promise
 public protocol EYParser: class {
     init()
 
-    func parse<M: EYNetworkModel>(_ modelType: M.Type, _ data: Data) -> Promise<M>
-    func parseArray<M: EYNetworkModel>(_ modelType: M.Type, _ data: Data) -> Promise<[M]>
+    func parse<M: EYNetworkModel>(_ modelType: M.Type, _ data: Data) throws -> Promise<M>
+    func parseArray<M: EYNetworkModel>(_ modelType: M.Type, _ data: Data) throws -> Promise<[M]>
 }

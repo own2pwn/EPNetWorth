@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		DE2800DE220FA32400E928FA /* EYClientImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2800DC220FA32400E928FA /* EYClientImp.swift */; };
 		DE2800DF220FA32400E928FA /* EYClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2800DD220FA32400E928FA /* EYClient.swift */; };
-		DE627601220FD00C007E6CBB /* NetworkConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE627600220FD00C007E6CBB /* NetworkConvertible.swift */; };
+		DE52980122105A720031002F /* EYNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52980022105A720031002F /* EYNetworkModel.swift */; };
+		DE52980422105AA90031002F /* EYEncodableNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52980322105AA90031002F /* EYEncodableNetworkModel.swift */; };
+		DE52980D22105B440031002F /* EYMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52980C22105B440031002F /* EYMapper.swift */; };
+		DE52980F22105B490031002F /* EYMapperImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52980E22105B490031002F /* EYMapperImp.swift */; };
+		DE52981122105B6B0031002F /* EY+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52981022105B6B0031002F /* EY+Encodable.swift */; };
 		DE627609220FD5A5007E6CBB /* HTTP+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE627608220FD5A5007E6CBB /* HTTP+Method.swift */; };
 		DE62760B220FD5B4007E6CBB /* String+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62760A220FD5B4007E6CBB /* String+Encoding.swift */; };
 		DE62760D220FD5C6007E6CBB /* Request+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62760C220FD5C6007E6CBB /* Request+Init.swift */; };
@@ -74,7 +78,11 @@
 		DE2800DC220FA32400E928FA /* EYClientImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYClientImp.swift; sourceTree = "<group>"; };
 		DE2800DD220FA32400E928FA /* EYClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYClient.swift; sourceTree = "<group>"; };
 		DE28012F220FA85900E928FA /* Promise.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Promise.xcodeproj; path = ../Promise/Promise.xcodeproj; sourceTree = "<group>"; };
-		DE627600220FD00C007E6CBB /* NetworkConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConvertible.swift; sourceTree = "<group>"; };
+		DE52980022105A720031002F /* EYNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYNetworkModel.swift; sourceTree = "<group>"; };
+		DE52980322105AA90031002F /* EYEncodableNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYEncodableNetworkModel.swift; sourceTree = "<group>"; };
+		DE52980C22105B440031002F /* EYMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYMapper.swift; sourceTree = "<group>"; };
+		DE52980E22105B490031002F /* EYMapperImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYMapperImp.swift; sourceTree = "<group>"; };
+		DE52981022105B6B0031002F /* EY+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EY+Encodable.swift"; sourceTree = "<group>"; };
 		DE627608220FD5A5007E6CBB /* HTTP+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTP+Method.swift"; sourceTree = "<group>"; };
 		DE62760A220FD5B4007E6CBB /* String+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Encoding.swift"; sourceTree = "<group>"; };
 		DE62760C220FD5C6007E6CBB /* Request+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Init.swift"; sourceTree = "<group>"; };
@@ -119,23 +127,15 @@
 			isa = PBXGroup;
 			children = (
 				DE05A325220F7159009EB62C /* KeyValue.swift */,
-				DE05A326220F7159009EB62C /* Model */,
 				DE05A32A220F7159009EB62C /* Request */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
 		};
-		DE05A326220F7159009EB62C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DE627600220FD00C007E6CBB /* NetworkConvertible.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		DE05A32A220F7159009EB62C /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				DE5297F9221058A20031002F /* JSON */,
 				DE05A32B220F7159009EB62C /* BodyElement.swift */,
 				DE05A32C220F7159009EB62C /* QueryElement.swift */,
 				DE05A32D220F7159009EB62C /* Resource.swift */,
@@ -155,7 +155,10 @@
 		DE05A32F220F7159009EB62C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DE05A330220F7159009EB62C /* Parser */,
+				DE52980322105AA90031002F /* EYEncodableNetworkModel.swift */,
+				DE52980022105A720031002F /* EYNetworkModel.swift */,
+				DE5297FF22105A630031002F /* Encoder */,
+				DE5297FE22105A600031002F /* Decoder */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,17 +168,8 @@
 			children = (
 				DE05A329220F7159009EB62C /* EYParser.swift */,
 				DE05A332220F7159009EB62C /* EYParserImp.swift */,
-				DE05A331220F7159009EB62C /* imp */,
 			);
 			path = Parser;
-			sourceTree = "<group>";
-		};
-		DE05A331220F7159009EB62C /* imp */ = {
-			isa = PBXGroup;
-			children = (
-				DE05A328220F7159009EB62C /* EY+Decodable.swift */,
-			);
-			path = imp;
 			sourceTree = "<group>";
 		};
 		DE2800DB220FA2DF00E928FA /* Client */ = {
@@ -193,6 +187,56 @@
 				DE28012F220FA85900E928FA /* Promise.xcodeproj */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE5297F9221058A20031002F /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		DE5297FE22105A600031002F /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				DE05A330220F7159009EB62C /* Parser */,
+				DE52980222105A840031002F /* Native */,
+			);
+			path = Decoder;
+			sourceTree = "<group>";
+		};
+		DE5297FF22105A630031002F /* Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				DE52980522105B150031002F /* Mapper */,
+				DE52980722105B1B0031002F /* Native */,
+			);
+			path = Encoder;
+			sourceTree = "<group>";
+		};
+		DE52980222105A840031002F /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				DE05A328220F7159009EB62C /* EY+Decodable.swift */,
+			);
+			path = Native;
+			sourceTree = "<group>";
+		};
+		DE52980522105B150031002F /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DE52980C22105B440031002F /* EYMapper.swift */,
+				DE52980E22105B490031002F /* EYMapperImp.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		DE52980722105B1B0031002F /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				DE52981022105B6B0031002F /* EY+Encodable.swift */,
+			);
+			path = Native;
 			sourceTree = "<group>";
 		};
 		DE627607220FD595007E6CBB /* Extension */ = {
@@ -351,17 +395,21 @@
 				DE627609220FD5A5007E6CBB /* HTTP+Method.swift in Sources */,
 				DE96B310220FA05100E11373 /* Constant.swift in Sources */,
 				DE96B311220FA05100E11373 /* KeyValue.swift in Sources */,
+				DE52980F22105B490031002F /* EYMapperImp.swift in Sources */,
 				DE62760D220FD5C6007E6CBB /* Request+Init.swift in Sources */,
 				DE2800DF220FA32400E928FA /* EYClient.swift in Sources */,
 				DE2800DE220FA32400E928FA /* EYClientImp.swift in Sources */,
 				DE62760B220FD5B4007E6CBB /* String+Encoding.swift in Sources */,
+				DE52980122105A720031002F /* EYNetworkModel.swift in Sources */,
 				DE96B312220FA05100E11373 /* EY+Decodable.swift in Sources */,
 				DE96B313220FA05100E11373 /* EYParser.swift in Sources */,
 				DE96B314220FA05100E11373 /* BodyElement.swift in Sources */,
+				DE52980422105AA90031002F /* EYEncodableNetworkModel.swift in Sources */,
+				DE52980D22105B440031002F /* EYMapper.swift in Sources */,
 				DE96B315220FA05100E11373 /* QueryElement.swift in Sources */,
+				DE52981122105B6B0031002F /* EY+Encodable.swift in Sources */,
 				DE96B316220FA05100E11373 /* Resource.swift in Sources */,
 				DE96B317220FA05100E11373 /* EYParserImp.swift in Sources */,
-				DE627601220FD00C007E6CBB /* NetworkConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
