@@ -11,7 +11,7 @@ import Foundation
 public protocol DecodableConvertible: EYNetworkModel, Decodable {}
 
 public extension DecodableConvertible {
-    public init(from data: Data, args: Any...) throws {
+    init(from data: Data, args: Any...) throws {
         guard let decoder = args.first as? JSONDecoder else {
             throw EYNetError(reason: "no json decoder provided to map [\(Self.self)]]!")
         }

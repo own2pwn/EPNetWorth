@@ -10,7 +10,7 @@ import Foundation
 public protocol EncodableConvertible: EYEncodableNetworkModel, Encodable {}
 
 public extension EncodableConvertible {
-    public func serialize(args: Any...) throws -> Data {
+    func serialize(args: Any...) throws -> Data {
         guard let encoder = args.first as? JSONEncoder else {
             throw EYNetError(reason: "no json encoder provided to serialize [\(Self.self)]!")
         }
