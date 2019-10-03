@@ -8,8 +8,16 @@
 
 import Foundation
 
-public struct EYNetError: Error {
+public struct EYNetError: Error, LocalizedError {
     public let reason: String
+
+    public var localizedDescription: String {
+        return "^ E: EYNetError => \(reason)"
+    }
+
+    public var errorDescription: String? {
+        return "^ E: EYNetError => \(reason)"
+    }
 }
 
 internal extension String {
